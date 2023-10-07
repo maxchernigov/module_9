@@ -46,7 +46,11 @@ def show_all(*args):
         for name, number in records.items():
             result += f"{name.title()} - {number}\n"
         return result.strip()
-    
+
+
+def ukknown(*args):
+    return "Unknown command. Try again"
+
 
 COMMANDS = {hello: "hello",
             add_contact: "add",
@@ -60,7 +64,7 @@ def parser(text:str):
     for func , kw in COMMANDS.items():
         if text.lower().startswith(kw):
             return func, text[len(kw):].strip().split()
-    return None, None  
+    return ukknown , []
 
 
 def main():
